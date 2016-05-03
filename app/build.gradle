@@ -17,6 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        free {
+            applicationId "com.havistudio.builditbigger.free"
+        }
+        paid {
+            applicationId "com.havistudio.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
@@ -26,4 +35,6 @@ dependencies {
     compile project(':myjokeactivity')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }

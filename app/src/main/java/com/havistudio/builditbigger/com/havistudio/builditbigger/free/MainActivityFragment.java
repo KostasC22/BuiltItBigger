@@ -1,4 +1,4 @@
-package com.havistudio.builditbigger;
+package com.havistudio.builditbigger.com.havistudio.builditbigger.free;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.havistudio.Joke;
+import com.havistudio.builditbigger.EndpointsAsyncTask;
+import com.havistudio.builditbigger.R;
 import com.havistudio.myjokeactivity.MyJokeActivity;
 
 /**
