@@ -1,9 +1,11 @@
-package com.havistudio.builditbigger;
+package com.havistudio.myjokeactivity;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +24,13 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
     private static MyApi myApiService = null;
     private Context context;
     private TextView mTextView;
+    private ProgressBar spinner;
 
     private static final String TAG = "EndpointsAsyncTask";
 
-    public EndpointsAsyncTask(TextView mTextView){
+    public EndpointsAsyncTask(TextView mTextView,ProgressBar spinner){
         this.mTextView = mTextView;
+        this.spinner = spinner;
     }
 
     @Override
@@ -65,5 +69,6 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
     protected void onPostExecute(String result) {
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         mTextView.setText(result);
+        spinner.setVisibility(View.GONE);
     }
 }

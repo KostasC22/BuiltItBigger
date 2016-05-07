@@ -49,7 +49,7 @@ public class MainActivityFragment extends Fragment {
         TextView tempTextJoke = (TextView) rootView.findViewById(R.id.joke_text);
         String tempString = "";
         try {
-            tempString = new EndpointsAsyncTask().execute(new Pair<Context, String>(this.getActivity(), "Manfred")).get();
+            //tempString = new EndpointsAsyncTask().execute(new Pair<Context, String>(this.getActivity(), "Manfred")).get();
         }catch (Exception e){
             e.printStackTrace();
         }

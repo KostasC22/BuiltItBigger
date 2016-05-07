@@ -9,6 +9,15 @@
     tools:context="com.havistudio.myjokeactivity.MyJokeActivityFragment"
     tools:showIn="@layout/activity_my_joke">
 
+    <TextView
+        android:id="@+id/display_joke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
