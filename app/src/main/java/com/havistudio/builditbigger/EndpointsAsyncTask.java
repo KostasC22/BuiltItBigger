@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +23,12 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
-    private TextView mTextView;
+    private ProgressBar mProgressBar;
 
     private static final String TAG = "EndpointsAsyncTask";
 
-    public EndpointsAsyncTask(TextView mTextView){
-        this.mTextView = mTextView;
+    public EndpointsAsyncTask(ProgressBar mProgressBar){
+        this.mProgressBar = mProgressBar;
     }
 
     @Override
@@ -64,6 +66,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
     @Override
     protected void onPostExecute(String result) {
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        mTextView.setText(result);
+        //mTextView.setText(result);
+        mProgressBar.setVisibility(View.GONE);
     }
 }
