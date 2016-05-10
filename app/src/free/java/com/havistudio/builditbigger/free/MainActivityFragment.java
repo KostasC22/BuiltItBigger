@@ -61,7 +61,6 @@ public class MainActivityFragment extends Fragment {
         });
 
         requestNewInterstitial();
-        final TextView tempTextJoke = (TextView) rootView.findViewById(R.id.joke_text);
         bShowJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +76,7 @@ public class MainActivityFragment extends Fragment {
 
                         showInterstitial();
                         try {
-                            tempString = new EndpointsAsyncTask(spinner).execute(new Pair<Context, String>(getActivity(), "Manfred")).get();
+                            tempString = new EndpointsAsyncTask().execute(new Pair<Context, String>(getActivity(), "Manfred")).get();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

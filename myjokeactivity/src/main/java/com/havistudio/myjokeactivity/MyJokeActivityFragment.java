@@ -27,18 +27,11 @@ public class MyJokeActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my_joke, container, false);
         TextView djTextView = (TextView) rootView.findViewById(R.id.display_joke);
-        //ProgressBar spinner = (ProgressBar) rootView.findViewById(R.id.progressBar1);
 
         Intent intent = getActivity().getIntent();
         String mJoke = intent.getStringExtra("joke");
         Log.i(TAG, "onCreateView: "+mJoke);
         djTextView.setText(mJoke);
-        //spinner.setVisibility(View.VISIBLE);
-        try{
-            //new EndpointsAsyncTask(djTextView,spinner).execute(new Pair<Context, String>(this.getActivity(), "Manfred"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return rootView;
     }
 }

@@ -47,6 +47,11 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View v) {
                 spinner.setVisibility(View.VISIBLE);
                 bShowJoke.setVisibility(View.GONE);
+                try {
+                    joke = new EndpointsAsyncTask().execute(new Pair<Context, String>(getActivity(), "Manfred")).get();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 new CountDownTimer(1000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
@@ -54,25 +59,13 @@ public class MainActivityFragment extends Fragment {
 
                     public void onFinish() {
 
-                        try {
-                            joke = new EndpointsAsyncTask(spinner).execute(new Pair<Context, String>(getActivity(), "Manfred")).get();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        openNewActivity();
                     }
 
                 }.start();
-                openNewActivity();
+
             }
         });
-        TextView tempTextJoke = (TextView) rootView.findViewById(R.id.joke_text);
-        String tempString = "";
-        try {
-            joke = new EndpointsAsyncTask(spinner).execute(new Pair<Context, String>(this.getActivity(), "Manfred")).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Log.i("Tag", "onCreate: " + tempString);
         return rootView;
     }
 

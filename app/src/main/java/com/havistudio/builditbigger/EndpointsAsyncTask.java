@@ -23,12 +23,10 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
-    private ProgressBar mProgressBar;
 
     private static final String TAG = "EndpointsAsyncTask";
 
-    public EndpointsAsyncTask(ProgressBar mProgressBar){
-        this.mProgressBar = mProgressBar;
+    public EndpointsAsyncTask(){
     }
 
     @Override
@@ -36,9 +34,6 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    // options for running against local devappserver
-                    // - 10.0.2.2 is localhost's IP address in Android emulator
-                    // - turn off compression when running against local devappserver
                     .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
@@ -46,8 +41,6 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
-
             myApiService = builder.build();
         }
 
@@ -65,8 +58,6 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        //mTextView.setText(result);
-        mProgressBar.setVisibility(View.GONE);
+        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }

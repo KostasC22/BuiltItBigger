@@ -18,10 +18,8 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         boolean isNotEmptyString = false;
         String temp = null;
 
-        TextView tv = new TextView(this.getContext());
-
         try {
-            temp = new EndpointsAsyncTask(tv).execute(new Pair<Context, String>(this.getContext(), "Manfred")).get();
+            temp = new EndpointsAsyncTask().execute(new Pair<Context, String>(this.getContext(), "Manfred")).get();
         } catch (Exception e){
 
         }
